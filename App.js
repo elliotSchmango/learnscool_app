@@ -1,20 +1,59 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Image } from 'react-native';
+import ProfilePage from './pages/ProfilePage';
+import SchedulePage from './pages/SchedulePage';
+import InformationPage from './pages/InformationPage';
+//icons
+import profileIcon from './assets/profile.png'; 
+import calendarIcon from './assets/schedule.png';
+import informationIcon from './assets/information.png';
+import logoIcon from './assets/learnscool_logo.png';
+
+const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Tab.Navigator>
+        <Tab.Screen 
+          name="Profile" 
+          component={ProfilePage} 
+          options={{
+            tabBarIcon: ({ color, size }) => (
+              <Image 
+                source={profileIcon} 
+                style={{ width: size, height: size, tintColor: color }}
+              />
+            ),
+          }} 
+        />
+        <Tab.Screen 
+          name="Schedule" 
+          component={SchedulePage} 
+          options={{
+            tabBarIcon: ({ color, size }) => (
+              <Image 
+                source={calendarIcon} 
+                style={{ width: size, height: size, tintColor: color }}
+              />
+            ),
+          }} 
+        />
+        <Tab.Screen 
+          name="Information" 
+          component={InformationPage} 
+          options={{
+            tabBarIcon: ({ color, size }) => (
+              <Image 
+                source={informationIcon} 
+                style={{ width: size, height: size, tintColor: color }}
+              />
+            ),
+          }} 
+        />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
