@@ -9,7 +9,6 @@ import InformationPage from './pages/InformationPage';
 import profileIcon from './assets/profile.png'; 
 import scheduleIcon from './assets/schedule.png';
 import informationIcon from './assets/information.png';
-import logoIcon from './assets/learnscool_logo.png';
 
 const Tab = createBottomTabNavigator();
 
